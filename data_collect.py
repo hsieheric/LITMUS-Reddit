@@ -3,10 +3,48 @@ import pandas as pd
 import datetime as dt
 
 api = PushshiftAPI()
-start_epoch=int(dt.datetime(2020, 12, 1).timestamp())
+# start_epoch=int(dt.datetime(2020, 12, 1).timestamp())
 
-api_request_generator = api.search_comments(q='vaccine', subreddit='coronavirus', score='<0',
-	filter = ['url', 'author', 'title', 'body', 'score', 'permalink', ], limit = 1000)
-temp = pd.DataFrame([comment.d_ for comment in api_request_generator])
 
-temp.to_csv('coronavirus_comments.csv')
+# Comments
+
+# api_request_generator = api.search_comments(q='vaccine', subreddit='coronavirus', score='<0',
+# 	filter = ['url', 'author', 'title', 'body', 'score', 'permalink', ], limit = 10000)
+# temp = pd.DataFrame([comment.d_ for comment in api_request_generator])
+
+# temp.to_csv('coronavirus_comments.csv')
+
+
+
+
+# Posts
+
+
+def get_posts():
+	subreddits = ['coronavirus', 'COVID19', 'CoronavirusNewYork']
+	posts = None
+	for i in subreddits:
+		pos_api_request_generator = api.search_submissions(q='vaccine', subreddit=i, score='>3', filter = ['title'], sort = 'desc', limit = 10000)
+		pos_df = pd.DataFrame([comment.d_ for comment in pos_api_request_generator])
+		pos_df['class'] = pd.Series([1 for x in range(len(pos_df.index))], index=pos_df.index)
+
+		neg_api_request_generator = api.search_submissions(q='vaccine', subreddit=i, score='<1', filter = ['title'], sort = 'asc', limit = 10000)
+		neg_df = pd.DataFrame([comment.d_ for comment in neg_api_request_generator])
+		neg_df['class'] = pd.Series([0 for x in range(len(neg_df.index))], index=neg_df.index)
+
+		posts = pd.concat([posts, pos_df, neg_df])
+
+	fos_api_request_generator = api.search_submissions(q='vaccine', subreddit='coronavirusFOS', filter = ['title'], sort = 'desc', limit = 10000)
+	fos_df = pd.DataFrame([comment.d_ for comment in fos_api_request_generator])
+	fos_df['class'] = pd.Series([0 for x in range(len(fos_df.index))], index=fos_df.index)
+
+	posts = pd.concat([posts, fos_df])
+
+	cols = posts.columns.tolist()
+	cols = cols[-1:] + cols[:-1]
+	posts = posts[cols]
+
+	posts.to_csv('post_data.csv', index = False)
+
+if __name__ == "__main__":
+	get_posts()
