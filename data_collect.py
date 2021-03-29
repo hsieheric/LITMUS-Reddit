@@ -40,9 +40,9 @@ def get_posts():
 
 	posts = pd.concat([posts, fos_df])
 
-	cols = posts.columns.tolist()
-	cols = cols[-1:] + cols[:-1]
-	posts = posts[cols]
+	# cols = posts.columns.tolist()
+	# cols = cols[-1:] + cols[:-1]
+	posts = posts[['class', 'title']]
 
 	posts.to_csv('post_data.csv', index = False)
 
