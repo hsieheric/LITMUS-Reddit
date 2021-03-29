@@ -19,7 +19,6 @@ api = PushshiftAPI()
 
 # Posts
 
-
 def get_posts():
 	subreddits = ['coronavirus', 'COVID19', 'CoronavirusNewYork']
 	posts = None
@@ -42,10 +41,10 @@ def get_posts():
 
 	cols = ['class', 'title', 'url', 'subreddit', 'score', 'permalink']
 	posts = posts[cols]
-	posts.to_csv('post_data_full.csv', index = False)
+	posts.to_csv('post_data_full.csv', index = False, encoding='utf-8-sig')
 	cols = ['class', 'title']
 	posts = posts[cols]
-	posts.to_csv('post_data.csv', index = False)
+	posts.to_csv('post_data.csv', index = False, encoding='utf-8-sig')
 
 if __name__ == "__main__":
 	get_posts()
