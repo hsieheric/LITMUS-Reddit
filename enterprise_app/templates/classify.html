@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>COVID-19 Misinformation Classifier</title>
+</head>
+<body>
+
+<style>
+.buttons {
+width: 200px;
+margin: 0 auto;
+display: inline;}
+
+.action_btn {
+width: 200px;
+margin: 0 auto;
+display: inline;}
+</style>
+
+<script>
+function myFunction() {
+  document.getElementById("demo").style.color = "red";
+}
+</script>
+
+<div style="text-align:center; position:relative; top:100px;">
+
+<h2>Does this Reddit post contain COVID-19 Misinformation?</h2>
+<p>Thank you for your submission!</p>
+<p>You submitted: {{post_title}}</p>
+<p> We classify this post as: {{nlp_class}}</p>
+<p> Do you agree with this classification?</p>
+
+<form action="/store" class="action_btn", method = "post">
+    <button name="agree" id = "agree" class="action_btn submit" type="agree" value="agree">Yes</button>
+    <button name="agree" id = "agree" class="action_btn cancel" type="agree" value="disagree">No</button>
+</form>
+</body>
+</html>
