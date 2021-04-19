@@ -20,16 +20,22 @@ def query():
         if posttitle != None:
 
             # Call NLP with post title, save as nlp_class
-            result = subprocess.run(['python', 'henlo.py', posttitle], capture_output=True, text=True)
+            result = subprocess.run(['python', 'model_predict.py', posttitle], capture_output=True, text=True)
             nlp_class = result.stdout
+            print(nlp_class)
 
             # Write to output
             with open('user_data.csv', 'a+') as file:
                 file.write(posttitle+",")
                 file.write(str(nlp_class).rstrip() +",")
 
+            nlp_class_out = "Misinformation" if int(nlp_class) == 0 else "Not Misinformation"
+            # if int(nlp_class) == 0:
+            #     nlp_class_out = "Misinformation"
+            # elif int(nlp_class) == 1:
+            #     nlp_class_out = "Not Misinformation"
             # Pass to classification page
-            return render_template('classify.html', post_title = posttitle, nlp_class = nlp_class)
+            return render_template('classify.html', post_title = posttitle, nlp_class = nlp_class_out)
 
     # Error
     return render_template('error.html')
