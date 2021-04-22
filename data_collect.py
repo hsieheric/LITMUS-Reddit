@@ -5,21 +5,15 @@ import datetime as dt
 api = PushshiftAPI()
 # start_epoch=int(dt.datetime(2020, 12, 1).timestamp())
 
-
-# Comments
-
 # api_request_generator = api.search_comments(q='vaccine', subreddit='coronavirus', score='<0',
 # 	filter = ['url', 'author', 'title', 'body', 'score', 'permalink', ], limit = 10000)
 # temp = pd.DataFrame([comment.d_ for comment in api_request_generator])
 
-# temp.to_csv('coronavirus_comments.csv')
-
-
-
-
 # Posts
 
 def get_posts():
+
+	# Larger Subreddits
 	subreddits = ['coronavirus', 'COVID19', 'CoronavirusNewYork']
 	posts = None
 	for i in subreddits:
@@ -33,6 +27,7 @@ def get_posts():
 
 		posts = pd.concat([posts, pos_df, neg_df])
 
+	# Smaller, controversial ones
 	fos_api_request_generator = api.search_submissions(q='vaccine', subreddit='coronavirusFOS', filter = ['url', 'subreddit', 'title', 'score', 'permalink'], sort = 'desc')
 	fos_df = pd.DataFrame([comment.d_ for comment in fos_api_request_generator])
 	fos_df['class'] = pd.Series([0 for x in range(len(fos_df.index))], index=fos_df.index)
