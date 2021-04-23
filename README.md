@@ -4,9 +4,9 @@ The inspiration for this project came from the original [LITMUS code](https://gi
 
 There are three main parts to this project: data collection, data preprocessing and classification, and a frontend webapp.
 
-The goal of this project was to classify misinformation on Reddit post titles that pertained to the COVID-19 vaccine. Data was aggregated and downloaded as a CSV, then hand-labelled as 0 (Misinformation) and 1 (Not misinformation). Various machine learning algorithms were run on the data; the best-performing model was saved and integrated with the frontend. The frontend provides user interaction with the classification, as well as gather additional data.
+The goal of this project was to classify misinformation on Reddit post titles that pertained to the COVID-19 vaccine. Data was aggregated and downloaded as a CSV, then hand-labelled as 0 (Misinformation) and 1 (Not Misinformation). Various machine learning algorithms were run on the data; the best-performing model was saved and integrated with the frontend. The frontend provides user interaction with the classification, as well as gather additional data.
 
-This project was done in Python 3. A detailed description of how to run main portions of the code is below.
+This project was done in Python 3. A detailed description of how to run main portions of the code is below. To see the main project now, run `python app.py` from the `enterprise_app` folder, making sure all packages are installed.
 
 ---
 
