@@ -2,6 +2,13 @@
 This project was done by Eric Hsieh and Dongsuk Lim Spring 2021 for CS6365 - Introduction to Enterprise Computing.
 The inspiration for this project came from the original [LITMUS code](https://github.com/aibek76/litmus-experiments), as well as the corresponding [LITMUS paper](https://dl.acm.org/doi/10.1145/3374214).
 
+# Packages
+To install the required packages:
+Python Environment: `pip install -r requirements.txt`
+Conda Environment: `conda create -f requirements.yml`
+
+# Project Overview
+
 There are three main parts to this project: data collection, data preprocessing and classification, and a frontend webapp.
 
 The goal of this project was to classify misinformation on Reddit post titles that pertained to the COVID-19 vaccine. Data was aggregated and downloaded as a CSV, then hand-labelled as 0 (Misinformation) and 1 (Not Misinformation). Various machine learning algorithms were run on the data; the best-performing model was saved and integrated with the frontend. The frontend provides user interaction with the classification, as well as gather additional data.
@@ -63,7 +70,7 @@ Packages used: `sys, tensorflow, keras, pandas, numpy, re, sklearn`
 The outputs from the webapp are saved to `user_data.csv` located in the `enterprise_app` folder.
 
 # Deliverables
-Besides our code, we have a paper included in this repo, as well as a YouTube video found here that demonstrates our application, which can be found here: https://youtu.be/jPV9aszERRw
+Besides our code, we have a paper included in this repo, as well as a YouTube video that demonstrates our application, which can be found here: https://youtu.be/jPV9aszERRw
 
 # Contact Us
 We can be reached at hsieh.eric@gatech.edu and dlim46@gatech.edu if there are any issues using this repository.
