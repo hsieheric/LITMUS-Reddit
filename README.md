@@ -61,3 +61,9 @@ Additionally, the Flask server calls a python subprocess to run the file `model_
 Packages used: `sys, tensorflow, keras, pandas, numpy, re, sklearn`
 
 The outputs from the webapp are saved to `user_data.csv` located in the `enterprise_app` folder.
+
+# Deliverables
+Besides our code, we have a paper included in this repo, as well as a YouTube video found here that demonstrates our application, which can be found here: https://youtu.be/jPV9aszERRw
+
+# Contact Us
+We can be reached at hsieh.eric@gatech.edu and dlim46@gatech.edu if there are any issues using this repository.
