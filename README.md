@@ -4,7 +4,9 @@ The inspiration for this project came from the original [LITMUS code](https://gi
 
 # Packages
 To install the required packages:
+
 Python Environment: `pip install -r requirements.txt`
+
 Conda Environment: `conda create -f requirements.yml`
 
 # Project Overview
